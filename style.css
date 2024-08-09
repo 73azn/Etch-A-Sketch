@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    background-color: black;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#container{
+    
+    
+    display: flex;
+    width: 960px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 0;
+   flex-flow: row wrap;
+    border: red solid 2px;
+    padding: 0;
+    
+    
+}
+
+.paper{
+   width: 7.5px;
+    height: 7.5px;
+    
+    background-color: aliceblue;
+    box-sizing: border-box;
+   
+    user-select: none;
+    
+}
+
+.colored{
+    background-color: black;
+}
