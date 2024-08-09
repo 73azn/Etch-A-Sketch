@@ -1,6 +1,16 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
+:root{
+
+    --mainColor:#000;
+}
+
 *{
     margin: 0;
     padding: 0;
+    font-family:"Silkscreen", sans-serif;
+    color: aliceblue;
 }
 body{
     display: flex;
@@ -38,5 +48,17 @@ body{
 }
 
 .colored{
-    background-color: black;
+    background-color: var(--mainColor);
+}
+
+.tools{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+}
+
+.tools button{
+    background: red;
 }

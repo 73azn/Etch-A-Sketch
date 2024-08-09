@@ -17,6 +17,7 @@ function load(){
 
 }
 load()
+let clear = document.body.innerHTML
 let docData = [document.body.innerHTML]
 let docDataret = []
 function changecolor(item){
@@ -63,6 +64,20 @@ document.addEventListener("keydown",function(e){
     }
 
 })
+
+function reset(){
+    document.body.innerHTML = clear
+}
+
+const color = document.querySelector("input")
+
+color.addEventListener("input",function(e){
+
+    document.documentElement.style.setProperty("--mainColor",color.value)
+    
+
+})
+
 
 
 
