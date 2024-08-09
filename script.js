@@ -1,36 +1,44 @@
 let isMouseDown = false;
-
-
+const color = document.querySelector(".color")
+let painting = document.querySelector("#container")
+const paper = document.querySelector(".paper")
+let touch = false
 function load(){
-    const con = document.querySelector("#container")
+  
 
-   
+    let squareSize = 360/128
 
-    for(i = 1 ; i<=128*128 ; i++){
-        const id = `pa${i}`
-        const paper = document.createElement("div")
-        paper.classList.add("paper")
-        paper.id = id
-        paper.setAttribute("onmouseenter",`changecolor(${id})`)
-        con.appendChild(paper)
+    for(i = 2 ; i<=128*128 ; i++){
+
+        const paperg = document.createElement("div")
+        paperg.style.backgroundColor = "white"
+        paperg.style.width = `${squareSize}px`
+        paperg.style.height = `${squareSize}px`
+        paperg.classList.add("paper")
+        paperg.setAttribute("onmouseover",`change(this)`)
+        
+        paperg.addEventListener("touchstart",function(e){
+            touch = true
+            change(paperg)
+        })
+
+        painting.appendChild(paperg)
+
+        
+        
     }
 
 }
 load()
 let clear = document.body.innerHTML
-let docData = [document.body.innerHTML]
+let docData = [painting.innerHTML]
 let docDataret = []
-function changecolor(item){
-    if(isMouseDown)  {
-        item.classList.add("colored");
-        
-    }
-}
+
+
 
 
 function udpateBody(){
-
-    docData.push(document.body.innerHTML)
+    docData.push(painting.innerHTML)
 }
 
 document.addEventListener('mousedown', function() {
@@ -50,33 +58,32 @@ if(e.ctrlKey && e.key.toLowerCase() == "z" && docData.length-1>0){
     
     
     docDataret.push(docData.pop())
-    document.body.innerHTML = docData[docData.length-1] 
+    painting.innerHTML = docData[docData.length-1] 
 }
 })
 
 document.addEventListener("keydown",function(e){
     if(e.ctrlKey && e.key.toLowerCase() == "y"&& docDataret.length>0){
         let temp = docDataret.pop()
-        document.body.innerHTML = temp
+        painting.innerHTML = temp
         docData.push(temp)
 
         
     }
 
 })
+function change(e){
+    if(isMouseDown || touch) e.style.backgroundColor = color.value
+    
+}
 
 function reset(){
     document.body.innerHTML = clear
 }
 
-const color = document.querySelector("input")
 
-color.addEventListener("input",function(e){
 
-    document.documentElement.style.setProperty("--mainColor",color.value)
-    
 
-})
 
 
 

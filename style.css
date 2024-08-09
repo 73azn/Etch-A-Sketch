@@ -37,19 +37,17 @@ body{
 }
 
 .paper{
-   width: 2.8px;
-    height: 2.8px;
-    
+ 
     background-color: aliceblue;
     box-sizing: border-box;
-   
+    touch-action: none;
     user-select: none;
     
 }
 
-.colored{
+/* .colored{
     background-color: var(--mainColor);
-}
+} */
 
 .tools{
     display: flex;
