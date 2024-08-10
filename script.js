@@ -1,14 +1,20 @@
 let isMouseDown = false;
+let isEraser = false
+
+
 const color = document.querySelector(".color")
 let painting = document.querySelector("#container")
 const paper = document.querySelector(".paper")
+const slider = document.querySelector(".amount")
+const viewer = document.querySelector("#slider")
 let touch = false
+
+
 function load(){
-  
+    if(painting.hasChildNodes) painting.innerHTML = ''
 
-    let squareSize = 360/128
-
-    for(i = 1 ; i<=128*128 ; i++){
+    let squareSize = 360/slider.value
+    for(i = 1 ; i<=slider.value*slider.value ; i++){
 
         const paperg = document.createElement("div")
         paperg.style.backgroundColor = "white"
@@ -24,12 +30,16 @@ function load(){
 
         painting.appendChild(paperg)
 
-        
+        viewer.textContent = `${slider.value} x ${slider.value}`
         
     }
 
 }
+
+
 load()
+
+
 let clear = painting.innerHTML
 let docData = [painting.innerHTML]
 let docDataret = []
@@ -41,18 +51,40 @@ function udpateBody(){
     docData.push(painting.innerHTML)
 }
 
+function reset(){
+    painting.innerHTML = clear
+}
+
+
+
+function change(self){
+    if(isEraser && isMouseDown) self.style.backgroundColor = "#fff"
+    else if(isMouseDown || touch) self.style.backgroundColor = color.value
+    
+}
+painting.previousSibling
+function eraser(self){
+    isEraser = !isEraser
+    if(isEraser) self.classList.add("selected")
+    else self.classList.remove("selected")
+}
+
+
+
+
+// to check if the mouse down or not
 document.addEventListener('mousedown', function() {
     isMouseDown = true;
     
 });
 
-// Event listener for mouseup
+
 document.addEventListener('mouseup', function() {
     isMouseDown = false;
     udpateBody();
 });
 
-
+//to undo
 document.addEventListener("keydown" , function(e){
 if(e.ctrlKey && e.key.toLowerCase() == "z" && docData.length-1>0){
     
@@ -61,7 +93,7 @@ if(e.ctrlKey && e.key.toLowerCase() == "z" && docData.length-1>0){
     painting.innerHTML = docData[docData.length-1] 
 }
 })
-
+//to do
 document.addEventListener("keydown",function(e){
     if(e.ctrlKey && e.key.toLowerCase() == "y"&& docDataret.length>0){
         let temp = docDataret.pop()
@@ -72,14 +104,11 @@ document.addEventListener("keydown",function(e){
     }
 
 })
-function change(e){
-    if(isMouseDown || touch) e.style.backgroundColor = color.value
-    
+
+function changeValue(self){
+    viewer.textContent = `${slider.value} x ${slider.value}`
 }
 
-function reset(){
-    painting.innerHTML = clear
-}
 
 
 

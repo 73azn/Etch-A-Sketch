@@ -15,9 +15,17 @@
 
         
         <button onclick="reset()">reset</button>
+        <button onclick="eraser(this)">eraser</button>
     </div>
     <div id="container">
         
+    </div>
+    <div id="secrets">
+        <p>grid size</p>
+        <p id="slider"></p>
+        <div class="slide"><input class="amount"type="range" min="16" max="128" step="16" value="16" onchange="changeValue(this)"><button onclick="load()">load</button></div>
+        <p>(ctrl + z) undo </p><br>
+        <p>(ctrl + y) do</p>
     </div>
     <script src="script.js"></script>
 </body>

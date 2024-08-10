@@ -57,6 +57,25 @@ body{
     padding: 15px;
 }
 
-.tools button{
+button{
     background: red;
+}
+
+
+.selected{
+    background-color: azure;
+    color: black;
+}
+#secrets{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.slide{
+    display: flex;
+    gap :3px;
 }
