@@ -52,17 +52,19 @@ function udpateBody(){
 }
 
 function reset(){
-    painting.innerHTML = clear
+   load()
 }
 
-
+function changeValue(self){
+    viewer.textContent = `${slider.value} x ${slider.value}`
+}
 
 function change(self){
-    if(isEraser && isMouseDown) self.style.backgroundColor = "#fff"
-    else if(isMouseDown || touch) self.style.backgroundColor = color.value
+    if(isEraser && isMouseDown || touch) self.style.backgroundColor = "#fff"
+    else if(isMouseDown || touch && !isEraser) self.style.backgroundColor = color.value
     
 }
-painting.previousSibling
+
 function eraser(self){
     isEraser = !isEraser
     if(isEraser) self.classList.add("selected")
@@ -105,9 +107,7 @@ document.addEventListener("keydown",function(e){
 
 })
 
-function changeValue(self){
-    viewer.textContent = `${slider.value} x ${slider.value}`
-}
+
 
 
 
