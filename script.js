@@ -8,7 +8,7 @@ function load(){
 
     let squareSize = 360/128
 
-    for(i = 2 ; i<=128*128 ; i++){
+    for(i = 1 ; i<=128*128 ; i++){
 
         const paperg = document.createElement("div")
         paperg.style.backgroundColor = "white"
@@ -30,7 +30,7 @@ function load(){
 
 }
 load()
-let clear = document.body.innerHTML
+let clear = painting.innerHTML
 let docData = [painting.innerHTML]
 let docDataret = []
 
@@ -78,7 +78,7 @@ function change(e){
 }
 
 function reset(){
-    document.body.innerHTML = clear
+    painting.innerHTML = clear
 }
 
 
